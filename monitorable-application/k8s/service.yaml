@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitorable-application-srv
+  labels:
+    app: monitorable-application
+spec:
+  selector:
+    app: monitorable-application
+  ports:
+    - name: web
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

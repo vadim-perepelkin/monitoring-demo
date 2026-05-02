@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: monitorable-application-monitor
+spec:
+  selector:
+    matchLabels:
+      app: monitorable-application # Лейбл для матчинга с сервисом (лейбл должен быть задан на сервисе)
+  endpoints:
+    - port: web  # Имя порта из Service
+      path: /actuator/prometheus  # Путь к метрикам вашего приложения
+      interval: 30s
